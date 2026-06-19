@@ -20,6 +20,7 @@ export const projectsData: Project[] = [
   {
     id: "career-guidance",
     title: "Smart Career Guidance System",
+    imageUrl: "/cutoff.png",
     subtitle: "A web-based academic selection and career recommendation platform.",
     role: "Eligibility Analyzer Module Developer",
     tech: ["React (Vite)", "Node.js", "Express.js", "MongoDB", "REST APIs"],
@@ -68,6 +69,7 @@ export const projectsData: Project[] = [
   {
     id: "golden-curator",
     title: "Golden Curator Mod System",
+    imageUrl: "/gold.jpg",
     subtitle: "MERN pipeline for event curation and admin moderation workflows.",
     role: "MERN Stack Developer",
     tech: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
@@ -90,7 +92,8 @@ export const projectsData: Project[] = [
   },
   {
     id: "hrm-system",
-    title: "HRM & Blood Donation Portal",
+    title: "Blood Donation Portal",
+    imageUrl: "/blood.jpg",
     subtitle: "A dual-purpose management web application for records and coordination.",
     role: "Full Stack Developer & API Architect",
     tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],

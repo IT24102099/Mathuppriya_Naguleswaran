@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, Mail, Terminal as TermIcon, Play } from "lucide-react";
+import { ArrowRight, FileText, Mail, Terminal as TermIcon, Play, Briefcase, MapPin } from "lucide-react";
 import { GithubIcon, LinkedinIcon, MediumIcon } from "@/components/SocialIcons";
+import ProfileSection from "@/components/hero/ProfileSection";
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -71,170 +73,108 @@ export default function Hero({ onOpenResume }: HeroProps) {
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
-        {/* Left Side Details */}
-        <div className="lg:col-span-6 flex flex-col justify-center text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono mb-6 mx-auto lg:mx-0 w-fit"
+    <div className="max-w-7xl mx-auto px-6
+                grid grid-cols-1 lg:grid-cols-12
+                gap-10 lg:gap-16
+                items-center
+                relative z-10 w-full">
+  {/* Left Side */}
+  <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left order-1 lg:order-1">
+
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono mb-6 mx-auto lg:mx-0 w-fit"
+    >
+      <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+      Ready for Internship 2026
+    </motion.div>
+
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-5xl md:text-7xl font-extrabold leading-tight mb-4"
+    >
+      Hi, I'm{" "}
+      <span className="bg-gradient-to-r from-white via-purple-300 to-purple-500 bg-clip-text text-transparent">
+        Mathuppriya
+      </span>
+    </motion.h1>
+
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="text-2xl md:text-3xl font-mono text-purple-400 mb-6"
+    >
+      Full Stack Developer
+    </motion.h2>
+
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
+      className="text-gray-400 text-lg mb-8"
+    >
+      Software Engineering Undergraduate
+    </motion.p>
+
+
+    {/* Buttons */}
+    <div className="flex flex-wrap gap-4 mb-10">
+
+      <button
+        onClick={handleContactScroll}
+        className="px-8 py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold transition"
+      >
+        Get In Touch
+      </button>
+
+      <button
+        onClick={onOpenResume}
+        className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 text-white"
+      >
+        Preview Resume
+      </button>
+
+      <a
+        href="/Mathuppriya Naguleswaran_CV.pdf"
+        download
+        className="px-8 py-4 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300"
+      >
+        Download CV
+      </a>
+
+    </div>
+
+    {/* Socials */}
+    <div className="flex gap-4">
+      {socialLinks.map((social) => {
+        const Icon = social.icon;
+
+        return (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noreferrer"
+            className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/30"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-ping" />
-            <span>Ready for Internship 2026</span>
-          </motion.div>
+            <Icon className="w-5 h-5" />
+          </a>
+        );
+      })}
+    </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-4"
-          >
-            Hi, I&apos;m <span className="text-gradient font-extrabold block lg:inline">Mathuppriya</span>
-          </motion.h1>
+  </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl sm:text-2xl font-mono text-purple-400 font-semibold mb-6"
-          >
-            Full Stack Developer
-          </motion.h2>
+  {/* Right Side */}
+  <ProfileSection />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-justify lg:text-left"
-          >
-            I craft clean, high-performance web and mobile systems. As a Software Engineering student at SLIIT, 
-            I build projects using the MERN stack and Spring Boot, combining strict code architectures with modern Apple-style UI designs.
-          </motion.p>
+</div>
 
-          {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8"
-          >
-            <button
-              onClick={handleContactScroll}
-              className="group flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg shadow-purple-500/20"
-            >
-              <span>Get in touch</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              onClick={onOpenResume}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-            >
-              <FileText className="w-4 h-4 text-purple-400" />
-              <span>Preview Resume</span>
-            </button>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex items-center justify-center lg:justify-start gap-5"
-          >
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={social.name}
-                  className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-purple-400 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              );
-            })}
-          </motion.div>
-        </div>
-
-
-        {/* Right Side: Animated Code Terminal */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="lg:col-span-6 w-full"
-        >
-          <div className="w-full rounded-2xl bg-slate-900 border border-white/10 shadow-2xl overflow-hidden glass">
-            {/* Terminal Window Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-slate-950/80 border-b border-white/5">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <span className="w-3 h-3 rounded-full bg-green-500/80" />
-              </div>
-              <div className="flex items-center gap-1.5 text-xs text-gray-400 font-mono">
-                <TermIcon className="w-3.5 h-3.5" />
-                <span>mathuppriya-terminal</span>
-              </div>
-              <div className="w-12" /> {/* Spacer */}
-            </div>
-
-            {/* Terminal Console Output */}
-            <div className="p-5 font-mono text-xs text-gray-300 min-h-[280px] bg-slate-950/50 leading-relaxed overflow-x-auto whitespace-pre">
-              <div className="flex items-center gap-2 text-purple-400 mb-2">
-                <span>$</span>
-                <span>{terminalText.split("\n")[0]}</span>
-                {terminalText.split("\n").length === 1 && showCursor && (
-                  <span className="w-1.5 h-4 bg-purple-400 animate-pulse" />
-                )}
-              </div>
-              {terminalText.split("\n").length > 1 && (
-                <div className="text-emerald-400">
-                  {terminalText.substring(commandText.length + 1)}
-                  {showCursor && <span className="inline-block w-1.5 h-3.5 bg-emerald-400 ml-0.5" />}
-                </div>
-              )}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Floating technologies in background */}
-      <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[30%] left-[5%] px-3 py-1.5 rounded-lg border border-purple-500/20 bg-purple-500/5 backdrop-blur-md text-xs font-mono text-purple-300 shadow-md"
-        >
-          React
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 15, 0], rotate: [0, -3, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[75%] left-[12%] px-3 py-1.5 rounded-lg border border-indigo-500/20 bg-indigo-500/5 backdrop-blur-md text-xs font-mono text-indigo-300 shadow-md"
-        >
-          Node.js
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -15, 0], rotate: [0, 4, 0] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] right-[10%] px-3 py-1.5 rounded-lg border border-pink-500/20 bg-pink-500/5 backdrop-blur-md text-xs font-mono text-pink-300 shadow-md"
-        >
-          Spring Boot
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 10, 0], rotate: [0, -2, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[80%] right-[32%] px-3 py-1.5 rounded-lg border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-md text-xs font-mono text-emerald-300 shadow-md"
-        >
-          MongoDB
-        </motion.div>
-      </div>
-    </section>
-  );
+</section>
+);
 }

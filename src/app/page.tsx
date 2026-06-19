@@ -67,7 +67,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-1.5 text-gray-500">
                   <Terminal className="w-3.5 h-3.5" />
-                  <span>portfolio-builder</span>
+                  <span>Mathuppriya Naguleswaran</span>
                 </div>
                 <div className="w-8" />
               </div>

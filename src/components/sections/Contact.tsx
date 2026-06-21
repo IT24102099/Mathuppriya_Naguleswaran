@@ -2,27 +2,37 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader2, MessageCircle  } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
+  e.preventDefault();
 
-    setStatus("sending");
-    setTimeout(() => {
-      setStatus("success");
-      setForm({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 4000);
-    }, 1500);
-  };
+  const text = `
+Name: ${form.name}
+
+Email: ${form.email}
+
+Subject: ${form.subject}
+
+Message:
+${form.message}
+  `;
+
+  const whatsappUrl =
+    `https://wa.me/94779178371?text=${encodeURIComponent(text)}`;
+
+  window.open(whatsappUrl, "_blank");
+};
 
   return (
     <section id="contact" className="py-24 relative bg-slate-950">
       {/* Background blurs */}
+      
       <div className="absolute bottom-0 right-[20%] w-[350px] h-[350px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -83,7 +93,23 @@ export default function Contact() {
 
           {/* Form Area (col-7) */}
           <div className="lg:col-span-7">
-            <div className="p-6 md:p-8 rounded-2xl border border-white/10 bg-slate-900/30 glass">
+            <div className="
+relative
+overflow-hidden
+p-8 md:p-10
+rounded-3xl
+border border-purple-500/20
+bg-gradient-to-br
+from-slate-900/80
+via-slate-950/90
+to-purple-950/20
+backdrop-blur-xl
+shadow-[0_0_50px_rgba(168,85,247,0.15)]
+hover:shadow-[0_0_80px_rgba(168,85,247,0.25)]
+transition-all
+duration-700
+">
+  
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
@@ -140,7 +166,43 @@ export default function Contact() {
                     className="px-4 py-3 rounded-xl bg-slate-950 border border-white/5 focus:border-purple-500/50 focus:outline-none text-white text-sm transition-all resize-none"
                   />
                 </div>
+<div className="absolute inset-0 pointer-events-none overflow-hidden">
 
+  <GithubIcon
+    className="
+      absolute
+      top-10
+      right-10
+      w-8
+      h-8
+      text-purple-500/10
+      animate-pulse
+    "
+  />
+
+  <LinkedinIcon
+    className="
+      absolute
+      top-48
+      right-98
+      w-8
+      h-8
+      text-blue-500/10
+    "
+  />
+
+  <MessageCircle
+    className="
+      absolute
+      top-1/2
+      right-8
+      w-7
+      h-7
+      text-pink-500/10
+    "
+  />
+
+</div>
                 <button
                   type="submit"
                   disabled={status !== "idle"}
@@ -184,6 +246,7 @@ export default function Contact() {
                         <span>Message Sent Successfully!</span>
                         <CheckCircle className="w-4 h-4" />
                       </motion.div>
+                      
                     )}
                   </AnimatePresence>
                 </button>

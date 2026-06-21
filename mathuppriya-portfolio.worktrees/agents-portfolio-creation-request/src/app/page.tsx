@@ -7,12 +7,14 @@ import Tools from "@/components/tools/Tools";
 import Education from "@/components/education/Education";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
+import BackgroundEffects from "@/components/common/BackgroundEffects";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="relative overflow-hidden">
+        <BackgroundEffects />
         <Hero />
         <About />
         <Projects />

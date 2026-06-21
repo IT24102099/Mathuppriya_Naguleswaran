@@ -136,6 +136,7 @@ export default function RecruiterCTA({ onOpenResume }: RecruiterCTAProps) {
     className="absolute top-1/4 right-[18%] text-emerald-500/20"
   >
     <Server size={28} />
+    
   </motion.div>
   
     </section>

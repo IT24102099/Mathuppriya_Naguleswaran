@@ -95,13 +95,23 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
             <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-[10px] font-mono text-gray-300">Ctrl+K</kbd>
           </button>
 
-          <button
-            onClick={onOpenResume}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-purple-600/10 border border-purple-500/30 text-purple-300 text-xs font-semibold cursor-pointer hover:bg-purple-600 hover:text-white transition-all"
-          >
-            <FileText className="w-3.5 h-3.5" />
-            <span>Resume</span>
-          </button>
+          <a
+
+  href="/Mathuppriya_CV.pdf" 
+
+  target="_blank"
+
+  rel="noopener noreferrer"
+
+  className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+
+>
+
+  <FileText className="w-3.5 h-3.5 text-purple-400" />
+
+  <span>Resume</span>
+
+</a>
         </div>
 
         {/* Mobile menu trigger */}

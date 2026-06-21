@@ -167,15 +167,26 @@ export default function Hero({ onOpenResume }: HeroProps) {
         Get In Touch
       </button>
 
-      <button
-        onClick={onOpenResume}
-        className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 text-white"
-      >
-        Preview Resume
-      </button>
+      <a
+
+  href="/Mathuppriya_CV.pdf" 
+
+  target="_blank"
+
+  rel="noopener noreferrer"
+
+  className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+
+>
+
+  <FileText className="w-3.5 h-3.5 text-purple-400" />
+
+  <span>View Resume</span>
+
+</a>
 
       <a
-        href="/Mathuppriya Naguleswaran_CV.pdf"
+        href="/Mathuppriya_CV.pdf"
         download
         className="px-8 py-4 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300"
       >

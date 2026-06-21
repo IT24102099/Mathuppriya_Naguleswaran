@@ -45,6 +45,7 @@ export const projectsData: Project[] = [
   {
     id: "smart-campus",
     title: "Smart Campus Mobile Application",
+    imageUrl: "/campus.jpg",
     subtitle: "A unified cross-platform mobile app for campus operations.",
     role: "Visitor Sign-In & Lost-Found Module Developer",
     tech: ["React Native (Expo)", "Node.js", "Express.js", "MongoDB", "JWT Auth", "REST APIs"],

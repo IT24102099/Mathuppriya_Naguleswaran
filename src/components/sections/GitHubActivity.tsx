@@ -1,5 +1,236 @@
 "use client";
 
+import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Code2,
+} from "lucide-react";
+
+import { GithubIcon } from "@/components/SocialIcons";
+
+export default function GitHubSection() {
+  return (
+    <section
+      id="github"
+      className="py-24 relative bg-slate-950 overflow-hidden"
+    >
+      {/* Background Glow */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-indigo-600/10 blur-[120px] rounded-full" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+
+        {/* Heading */}
+        <div className="mb-12">
+          <p className="text-purple-400 uppercase tracking-[0.3em] text-sm font-mono">
+            Open Source
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
+            GitHub & Development
+          </h2>
+
+          <div className="w-24 h-1 mt-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
+        </div>
+
+        {/* Main Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          whileHover={{
+            y: -5,
+            scale: 1.01,
+          }}
+          transition={{
+            duration: 0.5,
+          }}
+          className="
+          rounded-3xl
+          border border-purple-500/20
+          bg-slate-900/60
+          backdrop-blur-xl
+          p-8 md:p-10
+          shadow-[0_0_40px_rgba(168,85,247,0.08)]
+          hover:shadow-[0_0_60px_rgba(168,85,247,0.15)]
+          transition-all
+          duration-500
+          "
+        >
+          {/* Description */}
+          <p className="text-slate-300 leading-8 text-lg text-justify">
+            I actively use GitHub for version control, academic
+            collaborations, and full-stack software development.
+            My repositories include MERN stack applications,
+            React Native mobile solutions, and Software
+            Engineering coursework projects.
+          </p>
+
+          {/* Highlights */}
+          <div className="grid md:grid-cols-2 gap-4 mt-8">
+            {[
+              "14 Public Repositories",
+              "Active MERN Projects",
+              "Academic Team Projects",
+              "Version Control with Git & GitHub",
+            ].map((item) => (
+              <motion.div
+                key={item}
+                whileHover={{ x: 5 }}
+                className="flex items-center gap-3"
+              >
+                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+
+                <span className="text-slate-300">
+                  {item}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* GitHub Profile Card */}
+          <motion.a
+            href="https://github.com/mathuppriya-dev"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{
+              scale: 1.02,
+            }}
+            className="
+            mt-10
+            flex
+            items-center
+            justify-between
+            p-6
+            rounded-3xl
+            border border-purple-500/20
+            bg-slate-950/50
+            hover:border-purple-500/40
+            transition-all
+            "
+          >
+            <div>
+              <h3 className="text-xl font-bold text-white">
+                mathuppriya-dev
+              </h3>
+
+              <p className="text-slate-400 mt-2">
+                Personal Account
+              </p>
+            </div>
+
+            <div
+              className="
+              flex items-center gap-2
+              px-5 py-3
+              rounded-xl
+              bg-purple-600
+              text-white
+              font-medium
+              "
+            >
+              <GithubIcon className="w-4 h-4" />
+              Visit GitHub
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </motion.a>
+
+          {/* GitHub Profile Card */}
+          <motion.a
+            href="https://github.com/IT24102099"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{
+              scale: 1.02,
+            }}
+            className="
+            mt-10
+            flex
+            items-center
+            justify-between
+            p-6
+            rounded-3xl
+            border border-purple-500/20
+            bg-slate-950/50
+            hover:border-purple-500/40
+            transition-all
+            "
+          >
+            <div>
+              <h3 className="text-xl font-bold text-white">
+                IT24102099
+              </h3>
+
+              <p className="text-slate-400 mt-2">
+                Academic Account
+              </p>
+            </div>
+
+            <div
+              className="
+              flex items-center gap-2
+              px-5 py-3
+              rounded-xl
+              bg-purple-600
+              text-white
+              font-medium
+              "
+            >
+              <GithubIcon className="w-4 h-4" />
+              Visit GitHub
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </motion.a>
+
+          {/* Top Technologies */}
+          <div className="mt-12">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <Code2 className="w-5 h-5 text-purple-400" />
+              Top Technologies
+            </h3>
+
+            <div className="flex flex-wrap gap-3">
+              {[
+                "React",
+                "Next.js",
+                "Node.js",
+                "MongoDB",
+                "Java",
+                "Spring Boot",
+                "React Native",
+                "TypeScript",
+              ].map((tech) => (
+                <motion.span
+                  key={tech}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                  }}
+                  className="
+                  px-4 py-2
+                  rounded-full
+                  bg-purple-500/10
+                  border border-purple-500/20
+                  text-purple-300
+                  text-sm
+                  font-medium
+                  "
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
+
+{/* "use client";
+
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { GitBranch, Star, Users, FolderDot, ArrowUpRight, Loader2 } from "lucide-react";
@@ -113,7 +344,7 @@ export default function GitHubActivity() {
   return (
     <section className="py-24 relative bg-slate-950">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Title */}
+      
         <div className="text-center mb-16">
           <span className="text-xs font-mono text-purple-400 uppercase tracking-widest mb-3 block">Live Dashboard</span>
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight flex items-center justify-center gap-2">
@@ -130,7 +361,7 @@ export default function GitHubActivity() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Stats Overview Sidebar (col-4) */}
+            
             <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
               <div className="p-6 rounded-2xl border border-white/5 bg-slate-900/50 glass flex items-center gap-4 hover:border-purple-500/20 transition-all duration-300">
                 <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
@@ -163,7 +394,6 @@ export default function GitHubActivity() {
               </div>
             </div>
 
-            {/* Recent Repositories Grid (col-8) */}
             <div className="lg:col-span-8 flex flex-col gap-4">
               <div className="flex items-center justify-between px-2 text-xs font-mono text-gray-500">
                 <span>Recent active repositories</span>
@@ -213,3 +443,4 @@ export default function GitHubActivity() {
     </section>
   );
 }
+*/}

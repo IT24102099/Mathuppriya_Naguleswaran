@@ -15,6 +15,50 @@ export default function Hero({ onOpenResume }: HeroProps) {
   const [terminalText, setTerminalText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
 
+  // Typewriter effect state
+  const roles = [
+    "Software Engineering Undergraduate",
+    "Full Stack Developer",
+    "MERN Stack Developer",
+    "Backend Developer",
+    "Problem Solver"
+  ];
+  const [currentRoleIdx, setCurrentRoleIdx] = useState(0);
+  const [roleText, setRoleText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingCursor, setTypingCursor] = useState(true);
+
+  // Blinking cursor for roles
+  useEffect(() => {
+    const intv = setInterval(() => setTypingCursor(c => !c), 400);
+    return () => clearInterval(intv);
+  }, []);
+
+  // Typing logic
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    const currentFullText = roles[currentRoleIdx];
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setRoleText((prev) => prev.slice(0, -1));
+      }, 25);
+    } else {
+      timer = setTimeout(() => {
+        setRoleText((prev) => currentFullText.slice(0, prev.length + 1));
+      }, 45);
+    }
+
+    if (!isDeleting && roleText === currentFullText) {
+      timer = setTimeout(() => setIsDeleting(true), 1600); // pause at complete text
+    } else if (isDeleting && roleText === "") {
+      setIsDeleting(false);
+      setCurrentRoleIdx((prev) => (prev + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [roleText, isDeleting, currentRoleIdx]);
+
   const commandText = "cat mathuppriya.json";
   const jsonResponse = `{
   "name": "Mathuppriya Naguleswaran",
@@ -79,16 +123,17 @@ export default function Hero({ onOpenResume }: HeroProps) {
                 items-center
                 relative z-10 w-full">
   {/* Left Side */}
-  <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left order-1 lg:order-1">
-
-    <motion.div
+  <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-left order-1 lg:order-1">    <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono mb-6 mx-auto lg:mx-0 w-fit"
+      className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono mb-6 mx-auto lg:mx-0 w-fit"
     >
-      <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-      Ready for Internship 2026
+      <span className="relative flex h-2.5 w-2.5">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+      </span>
+      <span>Available For Internship Opportunities</span>
     </motion.div>
 
     <motion.h1
@@ -107,21 +152,11 @@ export default function Hero({ onOpenResume }: HeroProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="text-2xl md:text-3xl font-mono text-purple-400 mb-6"
+      className="text-xl md:text-2xl font-mono text-purple-400 mb-8 min-h-[36px] flex items-center justify-center lg:justify-start"
     >
-      Full Stack Developer
+      <span>{roleText}</span>
+      <span className={`w-1 h-5 bg-purple-400 ml-1 inline-block ${typingCursor ? "opacity-100" : "opacity-0"}`} />
     </motion.h2>
-
-    <motion.p
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3 }}
-      className="text-gray-400 text-lg mb-8"
-    >
-      Software Engineering Undergraduate
-    </motion.p>
-
-
     {/* Buttons */}
     <div className="flex flex-wrap gap-4 mb-10">
 

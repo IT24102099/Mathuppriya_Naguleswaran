@@ -2,10 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Layout, Server, Database, Wrench, ExternalLink } from "lucide-react";
-
+import {
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiMongodb,
+  SiSpringboot,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import { Coffee } from "lucide-react";
 interface SkillItem {
   name: string;
-  usage: string; // Project highlights / where it was used
   experience: string; // Level of depth
 }
 
@@ -14,6 +21,7 @@ interface SkillCategory {
   icon: typeof Layout;
   color: string;
   borderColor: string;
+  iconColor: string;
   skills: SkillItem[];
 }
 
@@ -23,24 +31,26 @@ export default function Skills() {
       title: "Frontend Stack",
       icon: Layout,
       color: "from-purple-500/10 to-purple-500/0",
-      borderColor: "border-purple-500/20",
+      borderColor: "hover:border-purple-500/30 border-white/5",
+      iconColor: "text-purple-500",
       skills: [
-        { name: "React.js", usage: "Career Guidance, Blood Donation", experience: "Core Library" },
-        { name: "Next.js", usage: "Personal Portfolios & Dashboards", experience: "Framework" },
-        { name: "JavaScript", usage: "Dynamic Frontend & Backend Scripts", experience: "Advanced" },
-        { name: "TypeScript", usage: "Type-safe Next.js Systems", experience: "Advanced" },
-        { name: "HTML & CSS", usage: "Responsive Layouts & Custom Animations", experience: "Core" },
+        { name: "React.js",  experience: "Core Library" },
+        { name: "Next.js",  experience: "Framework" },
+        { name: "JavaScript",  experience: "Advanced" },
+        { name: "TypeScript",  experience: "Advanced" },
+        { name: "HTML & CSS",  experience: "Core" },
       ],
     },
     {
       title: "Backend Core",
       icon: Server,
       color: "from-indigo-500/10 to-indigo-500/0",
-      borderColor: "border-indigo-500/20",
+      borderColor: "hover:border-indigo-500/30 border-white/5",
+      iconColor: "text-indigo-500",
       skills: [
-        { name: "Node.js", usage: "Smart Campus & Career Systems", experience: "Runtime Environment" },
-        { name: "Express.js", usage: "RESTful API Routers & Middlewares", experience: "Core Backend" },
-        { name: "Java Spring Boot", usage: "Enterprise APIs & Backend Systems", experience: "Framework" },
+        { name: "Node.js", experience: "Runtime Environment" },
+        { name: "Express.js", experience: "Core Backend" },
+        { name: "Java Spring Boot", experience: "Framework" },
       ],
     },
     {
@@ -48,9 +58,10 @@ export default function Skills() {
       icon: Database,
       color: "from-emerald-500/10 to-emerald-500/0",
       borderColor: "border-emerald-500/20",
+      iconColor: "text-emerald-500",
       skills: [
-        { name: "MongoDB", usage: "MERN Stack Projects (NoSQL)", experience: "Document Database" },
-        { name: "SQL", usage: "Relational Data Schemas & Queries", experience: "Relational Database" },
+        { name: "MongoDB",  experience: "Document Database" },
+        { name: "SQL",  experience: "Relational Database" },
       ],
     },
     {
@@ -58,10 +69,11 @@ export default function Skills() {
       icon: Wrench,
       color: "from-pink-500/10 to-pink-500/0",
       borderColor: "border-pink-500/20",
+      iconColor: "text-pink-500",
       skills: [
-        { name: "Git & GitHub", usage: "Version Control & Team Workflows", experience: "Daily Use" },
-        { name: "Postman", usage: "API Testing & Documentation", experience: "Daily Use" },
-        { name: "VS Code", usage: "Code Writing & Debugging Workspaces", experience: "Primary IDE" },
+        { name: "Git & GitHub",  experience: "Daily Use" },
+        { name: "Postman",  experience: "Daily Use" },
+        { name: "VS Code",  experience: "Primary IDE" },
       ],
     },
   ];
@@ -89,7 +101,58 @@ export default function Skills() {
       {/* Background blurs */}
       <div className="absolute top-[10%] right-[10%] w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[10%] left-[10%] w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
+{/* Floating Tech Logos */}
+<div className="absolute inset-0 overflow-hidden pointer-events-none">
 
+  <motion.div
+    animate={{ y: [0, -20, 0] }}
+    transition={{ duration: 5, repeat: Infinity }}
+    className="absolute top-20 left-16 text-purple-400"
+  >
+    <SiReact size={40} />
+  </motion.div>
+
+  <motion.div
+    animate={{ y: [0, 20, 0] }}
+    transition={{ duration: 6, repeat: Infinity }}
+    className="absolute top-32 right-20 text-white"
+  >
+    <SiNextdotjs size={36} />
+  </motion.div>
+
+  <motion.div
+    animate={{ y: [0, -15, 0] }}
+    transition={{ duration: 4.5, repeat: Infinity }}
+    className="absolute bottom-24 left-20 text-green-500"
+  >
+    <SiNodedotjs size={40} />
+  </motion.div>
+
+  <motion.div
+    animate={{ y: [0, 20, 0] }}
+    transition={{ duration: 5.5, repeat: Infinity }}
+    className="absolute bottom-32 right-24 text-emerald-400"
+  >
+    <SiMongodb size={40} />
+  </motion.div>
+
+  <motion.div
+    animate={{ y: [0, -18, 0] }}
+    transition={{ duration: 6, repeat: Infinity }}
+    className="absolute top-1/2 left-[8%] text-orange-500"
+  >
+     <FaJava size={36} />
+  </motion.div>
+
+  <motion.div
+    animate={{ y: [0, 18, 0] }}
+    transition={{ duration: 5, repeat: Infinity }}
+    className="absolute top-1/2 right-[8%] text-green-400"
+  >
+    <SiSpringboot size={36} />
+  </motion.div>
+
+</div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Heading */}
         <div className="text-center mb-16">
@@ -112,61 +175,93 @@ export default function Skills() {
           <div className="w-12 h-1 bg-purple-600 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Categories Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
-          {skillCategories.map((category, idx) => {
-            const CategoryIcon = category.icon;
-            return (
-              <motion.div
-                key={idx}
-                variants={cardVariants}
-                className={`p-6 rounded-2xl border ${category.borderColor} bg-gradient-to-br ${category.color} glass flex flex-col gap-6 hover:border-purple-500/30 transition-colors duration-300`}
-              >
-                {/* Category Header */}
-                <div className="flex items-center gap-3 pb-4 border-b border-white/5">
-                  <div className="p-2.5 rounded-xl bg-slate-900 border border-white/5 text-purple-400">
-                    <CategoryIcon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white tracking-tight">{category.title}</h3>
-                </div>
+        
+       {/* Categories Grid */}
+<motion.div
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="grid grid-cols-1 md:grid-cols-2 gap-8"
+>
+  {skillCategories.map((category, idx) => {
+    const CategoryIcon = category.icon;
 
-                {/* Skills Cards Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {category.skills.map((skill, sIdx) => (
-                    <div
-                      key={sIdx}
-                      className="p-4 rounded-xl bg-slate-900/50 border border-white/5 hover:border-white/10 hover:bg-slate-900 transition-all flex flex-col justify-between gap-2 group"
-                    >
-                      <div className="flex items-start justify-between gap-1.5">
-                        <span className="font-bold text-white text-sm tracking-tight group-hover:text-purple-300 transition-colors">
-                          {skill.name}
-                        </span>
-                        <span className="text-[10px] font-mono font-semibold text-gray-500 uppercase tracking-wider">
-                          {skill.experience}
-                        </span>
-                      </div>
-                      <div className="flex flex-col gap-0.5">
-                        <span className="text-[10px] text-gray-500 font-mono uppercase tracking-widest">
-                          Project Usage
-                        </span>
-                        <span className="text-xs text-gray-400 font-medium">
-                          {skill.usage}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+    return (
+      <motion.div
+        key={idx}
+        variants={cardVariants}
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+        }}
+        className={`
+          rounded-3xl
+          border ${category.borderColor}
+          bg-gradient-to-br ${category.color}
+          backdrop-blur-xl
+          p-8
+          shadow-[0_0_30px_rgba(168,85,247,0.08)]
+          hover:shadow-[0_0_50px_rgba(168,85,247,0.15)]
+          transition-all duration-500
+        `}
+      >
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-8">
+          <div
+            className={`p-3 rounded-2xl bg-slate-900 border border-white/5 ${category.iconColor}`}
+          >
+            <CategoryIcon className="w-6 h-6" />
+          </div>
+
+          <h3 className="text-2xl font-bold text-white">
+            {category.title}
+          </h3>
+        </div>
+
+        {/* Skills */}
+        <div className="space-y-5">
+          {category.skills.map((skill, sIdx) => (
+            <motion.div
+              key={sIdx}
+              whileHover={{ x: 5 }}
+              className="flex items-center justify-between group"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className={`
+                    w-2.5 h-2.5 rounded-full
+                    ${category.iconColor.replace("text", "bg")}
+                  `}
+                />
+
+                <span className="text-slate-300 text-lg group-hover:text-white transition-colors">
+                  {skill.name}
+                </span>
+              </div>
+
+              <span
+                className="
+                px-3 py-1
+                rounded-full
+                bg-purple-500/10
+                border border-purple-500/20
+                text-purple-300
+                text-xs
+                font-medium
+                "
+              >
+                {skill.experience}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    );
+  })}
+</motion.div>
       </div>
     </section>
+    
   );
 }

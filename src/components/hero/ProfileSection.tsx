@@ -110,6 +110,7 @@ export default function ProfileSection() {
               alt="Mathuppriya"
               fill
               priority
+               sizes="(max-width: 768px) 300px, 430px"
               className="object-cover"
             />
           </div>

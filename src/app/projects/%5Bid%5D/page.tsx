@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Github, Globe, CheckCircle2, AlertTriangle, ShieldCheck, HelpCircle } from "lucide-react";
+import { ArrowLeft, Globe, CheckCircle2, AlertTriangle, ShieldCheck, HelpCircle } from "lucide-react";
 import { projectsData } from "@/lib/projects";
+import { GithubIcon } from "@/components/SocialIcons";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -182,7 +183,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs transition-all hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-purple-500/15"
               >
-                <Github className="w-4 h-4" />
+                <GithubIcon className="w-4 h-4" />
                 <span>View Source Repository</span>
               </a>
             )}

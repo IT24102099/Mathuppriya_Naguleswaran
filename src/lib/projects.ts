@@ -14,6 +14,8 @@ export interface Project {
   outcome: string;
   features: string[];
   lessons: string[];
+  duration: string;
+  teamSize: string;
 }
 
 export const projectsData: Project[] = [
@@ -40,7 +42,9 @@ export const projectsData: Project[] = [
       "Mastered writing highly optimized Mongo query pipelines for ranges.",
       "Learned the value of designing clean input interfaces for non-technical students.",
       "Gained deeper understanding of client-side state managers in complex forms."
-    ]
+    ],
+    duration: "6 Months",
+  teamSize: "5 developers",
   },
   {
     id: "smart-campus",
@@ -68,7 +72,9 @@ export const projectsData: Project[] = [
 "Implemented JWT authentication and role-based authorization.",
 "Designed real-time dashboard interfaces for monitoring visitor activities.",
 "Improved mobile application usability and responsiveness across devices."
-    ]
+    ],
+     duration: "6 Months",
+  teamSize: "5 developers",
   },
   {
     id: "golden-curator",
@@ -92,7 +98,9 @@ export const projectsData: Project[] = [
       "Optimized document state-flag transitions in MongoDB.",
       "Learned to coordinate frontend state changes on fast batch updates.",
       "Implemented security middleware to prevent unauthorized API requests."
-    ]
+    ],
+     duration: "10 Days",
+  teamSize: "Me alone (Freelance)",
   },
   {
     id: "hrm-system",
@@ -119,6 +127,8 @@ export const projectsData: Project[] = [
       "Learned the importance of strict data security controls for medical search data.",
       "Mastered building clean REST endpoints using Express router configurations.",
       "Refined JavaScript validation rules to optimize browser checks before API calls."
-    ]
+    ],
+     duration: "6 Months" ,
+  teamSize: "6 developers",
   }
 ];

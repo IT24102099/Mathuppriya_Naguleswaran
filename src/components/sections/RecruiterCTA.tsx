@@ -92,7 +92,7 @@ export default function RecruiterCTA({ onOpenResume }: RecruiterCTAProps) {
     transition={{ duration: 6, repeat: Infinity }}
     className="absolute top-16 left-16 text-purple-500/20"
   >
-    <GithubIcon size={42} />
+    <GithubIcon width={42} height={42} />
   </motion.div>
 
 </div>
@@ -103,7 +103,7 @@ export default function RecruiterCTA({ onOpenResume }: RecruiterCTAProps) {
     transition={{ duration: 7, repeat: Infinity }}
     className="absolute top-24 right-20 text-blue-500/20"
   >
-    <LinkedinIcon size={40} />
+    <LinkedinIcon width={40} height={40} />
   </motion.div>
 
   <motion.div
